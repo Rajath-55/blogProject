@@ -126,7 +126,7 @@ class BlogCard extends Component {
     return (
       <div className="main">
         <div className="cards gradient-diff black ">
-          <div className="image-data">
+          <div className="image-data my-3">
             <div className="background-image">
               <img
                 src={
@@ -211,7 +211,7 @@ class BlogCard extends Component {
       <div className="main">
         {this.state.editMode === false ? (
           <div className="parent">
-            <div className="jumbotron whitebg crete black">
+            <div className="jumbotron whitebg crete black ">
               <img
                 src={
                   blog.imageurl
@@ -252,7 +252,7 @@ class BlogCard extends Component {
                  {this.state.likes}
               </span>
             </div>
-            <div className="comments">
+            <div className="comments white shadows lead">
               <div className="comments-list">
                 {(this.state.commentsRendered ? this.state.commentsRendered.map(comment => this.renderComment(comment)) : <p></p>)};
               </div>
@@ -339,7 +339,7 @@ class BlogCard extends Component {
               this.state.data && this.state.data.count > 0 ? (
                 this.state.data.blogs.map((blog) => this.renderBlogs(blog))
               ) : (
-                <p className="white">Loading..</p>
+                <p className="white">Loading../No Blogs</p>
               )
             ) : (
               <SingleBlog

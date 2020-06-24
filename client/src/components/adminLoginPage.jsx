@@ -93,16 +93,7 @@ class AdminLoginPage extends Component {
                   onChange={this.handlePasswordChange}
                 />
               </div>
-              <div className="form-group form-check crete">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label className="form-check-label" for="exampleCheck1">
-                  Check me out
-                </label>
-              </div>
+              
               <div>
                 <Link to={this.state.redirect} className="btn btn-primary" onClick={this.handleSubmit}>Submit</Link>
               </div>
