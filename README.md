@@ -6,4 +6,4 @@ npm install
 ### Then in the root folder run 
 npm run dev
 
-###This starts the server locally.
+### This starts the server locally.
