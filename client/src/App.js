@@ -5,6 +5,7 @@ import AdminLoginPage from './components/adminLoginPage';
 import BlogPage from './components/blogPage';
 import AdminDashBoard from './components/adminDashBoard';
 import AddBlog from './components/addBlog';
+import {ProtectedRoute} from './components/protectedroute';
 
 
 
@@ -36,12 +37,10 @@ class App extends Component {
         <Route path="/blogs">
           <BlogPage/>
         </Route>
-        <Route path="/dashboard">
-          <AdminDashBoard/>
-        </Route>
-        <Route path="/add" >
-          <AddBlog />
-        </Route>
+        <ProtectedRoute exact path="/dashboard" component = {AdminDashBoard} />
+        <ProtectedRoute exact path="/add" component = {AddBlog} />
+        
+        <Route path="*" component={() => <div className="gradient"><h1 className="white crete middle">404 not found!</h1></div>} />
       </Switch>
       </Router>
       <ScrollTop/>

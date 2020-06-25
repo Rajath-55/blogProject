@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import BlogCard from "./blogCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import auth from './auth';
 
-const bcrypt = require('bcryptjs')
+
 
 class AdminLoginPage extends Component {
   constructor(props) {
@@ -22,11 +23,8 @@ class AdminLoginPage extends Component {
     console.log(this.state.username);
     const res = await this.getUsername();
     console.log(res);
-    if(this.state.username === res){
+    if(this.state.username === res)
        this.setState({usernameVerified : true})
-    }   
-
-
   };
   handlePasswordChange = async (e) => {
        await this.setState({password : e.target.value});
@@ -34,15 +32,17 @@ class AdminLoginPage extends Component {
        const res = await this.getPassword();
        console.log(res);
        if(this.state.password === res){
+        
        this.setState({passwordVerified : true})
        }
-
-      //  console.log(this.passwordVerified);
        
 
   }  
-  handleSubmit = () => {
+  handleSubmit = (p) => {
     if(this.state.usernameVerified && this.state.passwordVerified){
+      auth.login();
+      console.log(auth.isAuthenticated());
+      // this.props.history.push("/dashboard");
       this.setState({redirect : "/dashboard"})
     }
     else{
@@ -99,7 +99,16 @@ class AdminLoginPage extends Component {
                   onChange={this.handlePasswordChange}
                 />
               </div>
-              
+              <div className="form-group form-check crete">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label className="form-check-label" for="exampleCheck1">
+                  Check me out
+                </label>
+              </div>
               <div>
                 <Link to={this.state.redirect} className="btn btn-primary" onClick={this.handleSubmit}>Submit</Link>
               </div>

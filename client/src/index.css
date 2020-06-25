@@ -129,6 +129,9 @@ a{
 .pad{
   padding-right : 2rem;
 }
+.comments{
+  overflow-x: hidden;
+}
 
 .cards:hover {
   transform: scale(1.05);
