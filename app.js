@@ -11,8 +11,12 @@ const bodyParser = require("body-parser");
 const blogRoutes = require('./api/routes/BlogRoutes');
 
 const adminRoutes = require('./api/routes/adminRoute');
-mongoose.connect( process.env.MONGODB_URI ||
-  "mongodb+srv://Rajath:Rajath2000@cluster0-ajgkh.mongodb.net/Cluster0?retryWrites=true&w=majority",
+
+const url = process.env.MONGODB_URI ||
+"mongodb+srv://Rajath:Rajath2000@cluster0-ajgkh.mongodb.net/Cluster0?retryWrites=true&w=majority";
+
+console.log(url);
+mongoose.connect( url,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
