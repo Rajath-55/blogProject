@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+const path = require("path");
 const mongoose = require("mongoose");
 
 const morgan = require("morgan");
@@ -10,7 +11,7 @@ const bodyParser = require("body-parser");
 const blogRoutes = require('./api/routes/BlogRoutes');
 
 const adminRoutes = require('./api/routes/adminRoute');
-mongoose.connect(
+mongoose.connect( process.env.MONGODB_URl ||
   "mongodb+srv://Rajath:Rajath2000@cluster0-ajgkh.mongodb.net/Cluster0?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
-  const path = require("path");
+  
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
