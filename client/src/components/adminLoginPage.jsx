@@ -12,7 +12,7 @@ class AdminLoginPage extends Component {
       username: "",
       password: "",
       usernameVerified : false,
-      passwordVerified : true,
+      passwordVerified : false,
       redirect : "/login",
      
     };
@@ -22,16 +22,22 @@ class AdminLoginPage extends Component {
     console.log(this.state.username);
     const res = await this.getUsername();
     console.log(res);
-    if(this.state.username === res)
+    if(this.state.username === res){
        this.setState({usernameVerified : true})
+    }   
+
+
   };
   handlePasswordChange = async (e) => {
        await this.setState({password : e.target.value});
        console.log(this.state.password);
        const res = await this.getPassword();
        console.log(res);
-       if(this.state.password === res)
+       if(this.state.password === res){
        this.setState({passwordVerified : true})
+       }
+
+      //  console.log(this.passwordVerified);
        
 
   }  
