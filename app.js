@@ -40,6 +40,11 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+
+app.use('/blogs', blogRoutes);
+app.use('/admin', adminRoutes);
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
@@ -48,9 +53,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-app.use('/blogs', blogRoutes);
-app.use('/admin', adminRoutes);
 
 //Catch errors
 app.use((req, res, next) => {
